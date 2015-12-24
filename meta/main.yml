@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Marcelo Correia
-  company: Star Visitor
+  company: correia.io
   description: "Installs & Removes APT packages"
   min_ansible_version: 1.4
   license: MIT

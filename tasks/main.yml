@@ -1,9 +1,9 @@
 ---
-
-- name: Install dependencies
-  apt: name={{ item }} state=installed update_cache=yes
+- name: Managing APT packages
+  apt:
+    state="{{ item.state }}"
+    name="{{ item.name }}"
+    update_cache=yes
+  when: "ansible_system == 'Linux'"
+  sudo: true
   with_items: apt_packages
-
-- name: Remove  dependencies
-  apt: name={{ item }} state=absent update_cache=yes
-  with_items: apt_remove_packages
