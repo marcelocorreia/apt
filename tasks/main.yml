@@ -1,4 +1,10 @@
 ---
+- name: Add Extra APT Repositories
+  apt_repository: repo="{{ item }}"
+  sudo: true
+  with_items:
+    - "{{extra_repos}}"
+
 - name: Managing APT packages
   apt:
     state="{{ item.state }}"
