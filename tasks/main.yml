@@ -1,4 +1,6 @@
 ---
+
+
 - name: Add Extra APT Repositories
   apt_repository: repo="{{ item }}"
   sudo: true
@@ -7,6 +9,17 @@
   tags:
     - apt
     - extra_repos
+
+- name: Upgrade APT packages
+  apt:
+    update_cache=yes
+    upgrade=yes
+    force=yes
+  when: "ansible_system == 'Linux'"
+  sudo: true
+  tags:
+      - apt
+      - upgrade
 
 - name: Managing APT packages
   apt:
@@ -20,13 +33,4 @@
     - apt
     - manage
 
-- name: Upgrade APT packages
-  apt:
-    update_cache=yes
-    upgrade=yes
-    force=yes
-  when: "ansible_system == 'Linux'"
-  sudo: true
-  tags:
-      - apt
-      - upgrade
+
