@@ -4,6 +4,9 @@
   sudo: true
   with_items:
     - "{{extra_repos}}"
+  tags:
+    - apt
+    - extra_repos
 
 - name: Managing APT packages
   apt:
@@ -13,3 +16,17 @@
   when: "ansible_system == 'Linux'"
   sudo: true
   with_items: apt_packages
+  tags:
+    - apt
+    - manage
+
+- name: Upgrade APT packages
+  apt:
+    update_cache=yes
+    upgrade=yes
+    force=yes
+  when: "ansible_system == 'Linux'"
+  sudo: true
+  tags:
+      - apt
+      - upgrade
