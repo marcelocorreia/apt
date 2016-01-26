@@ -1,6 +1,4 @@
 ---
-
-
 - name: Add Extra APT Repositories
   apt_repository: repo="{{ item }}"
   sudo: true
