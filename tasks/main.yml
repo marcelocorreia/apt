@@ -1,6 +1,7 @@
 ---
-- name: Add Extra APT Repositories
+- name: Add Extra PPA Repositories
   apt_repository: repo="{{ item }}"
+  when: "ansible_system == 'Linux'"
   sudo: true
   with_items:
     - "{{extra_repos}}"
