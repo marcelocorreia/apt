@@ -9,16 +9,6 @@
     - apt
     - extra_repos
 
-- name: Add APT Keys
-  apt_key:
-    keyserver={{ item.keyserver }}
-    id={{ item.id }}
-  sudo: true
-  with_items: "{{ apt_keys }}"
-  tags:
-      - apt
-      - apt_keys
-
 - name: Managing APT packages
   apt:
     state="{{ item.state }}"
