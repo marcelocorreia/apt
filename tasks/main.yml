@@ -1,5 +1,5 @@
 ---
-- name: Add Extra PPA Repositories
+- name: Add Extra APT Repositories
   apt_repository: repo="{{ item }}"
   when: "ansible_system == 'Linux'"
   sudo: true
@@ -9,16 +9,15 @@
     - apt
     - extra_repos
 
-- name: Upgrade APT packages
-  apt:
-    update_cache=yes
-    upgrade=yes
-    force=yes
-  when: "ansible_system == 'Linux'"
+- name: Add APT Keys
+  apt_key:
+    keyserver={{ item.keyserver }}
+    id={{ item.id }}
   sudo: true
+  with_items: "{{ apt_keys }}"
   tags:
       - apt
-      - upgrade
+      - apt_keys
 
 - name: Managing APT packages
   apt:
