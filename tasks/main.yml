@@ -14,11 +14,10 @@
     state="{{ item.state }}"
     name="{{ item.name }}"
     update_cache=yes
+    force=yes
   when: "ansible_system == 'Linux'"
   sudo: true
   with_items: apt_packages
   tags:
     - apt
-    - manage
-
 
