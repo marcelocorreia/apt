@@ -1,15 +1,4 @@
 ---
-- name: Add Extra APT Repositories
-  apt_repository: repo="{{ item }}"
-  when: "ansible_system == 'Linux'"
-  sudo: true
-  when: extra_repos|length > 0​
-  with_items:
-    - "{{ extra_repos }}"
-  tags:
-    - apt
-    - extra_repos
-
 - name: Managing APT packages
   apt:
     state="{{ item.state }}"
