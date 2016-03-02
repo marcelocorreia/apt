@@ -1,1 +1,2 @@
 ---
+extra_repositories: {{ extra_repos | default(["ppa:ansible/ansible"]) }}

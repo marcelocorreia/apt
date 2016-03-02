@@ -4,7 +4,7 @@
   when: "ansible_system == 'Linux'"
   sudo: true
   with_items:
-    - "{{extra_repos}}"
+    - "{{ extra_repos }}"
   tags:
     - apt
     - extra_repos
@@ -20,4 +20,5 @@
   with_items: apt_packages
   tags:
     - apt
+
 
