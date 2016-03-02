@@ -3,6 +3,7 @@
   apt_repository: repo="{{ item }}"
   when: "ansible_system == 'Linux'"
   sudo: true
+  when: extra_repos|length > 0​
   with_items:
     - "{{ extra_repos }}"
   tags:
